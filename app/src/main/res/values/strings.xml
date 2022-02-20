@@ -10,4 +10,5 @@
     <string name="fragmento_cinza">Fragmento Cinza</string>
     <string name="fragmento_vermelho">Fragmento Vermelho</string>
     <string name="fragmento_azul">Fragmento Azul</string>
+    <string name="adicionar_cliente">Adicionar cliente</string>
 </resources>

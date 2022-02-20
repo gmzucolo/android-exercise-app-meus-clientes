@@ -34,7 +34,15 @@ public class ClienteController extends AppDataBase implements ICrud<Cliente> {
         //INCLUIR:
         //SQL -> INSERT INTO TABLE (...) VALUES (###)
         dadoDoObjeto.put(ClienteDataModel.NOME, obj.getNome());
+        dadoDoObjeto.put(ClienteDataModel.TELEFONE, obj.getTelefone());
         dadoDoObjeto.put(ClienteDataModel.EMAIL, obj.getEmail());
+        dadoDoObjeto.put(ClienteDataModel.CEP, obj.getCep());
+        dadoDoObjeto.put(ClienteDataModel.LOGRADOURO, obj.getLogradouro());
+        dadoDoObjeto.put(ClienteDataModel.NUMERO, obj.getNumero());
+        dadoDoObjeto.put(ClienteDataModel.BAIRRO, obj.getBairro());
+        dadoDoObjeto.put(ClienteDataModel.CIDADE, obj.getCidade());
+        dadoDoObjeto.put(ClienteDataModel.ESTADO, obj.getEstado());
+        dadoDoObjeto.put(ClienteDataModel.TERMOS_DE_USO, obj.isTermosDeUso());
 
         //enviar os dados (dadoDoObjeto) para classe AppDataBase
         //utilizando  um método capaz de INCLUIR o Obj no banco
