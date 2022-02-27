@@ -12,11 +12,11 @@ import android.widget.TextView;
 import app.modelo.meusclientes.R;
 
 
-public class ModeloPretoFragment extends Fragment {
+public class ModeloCinzaFragment extends Fragment {
 
     View view;
 
-    public ModeloPretoFragment() {
+    public ModeloCinzaFragment() {
     }
 
 
