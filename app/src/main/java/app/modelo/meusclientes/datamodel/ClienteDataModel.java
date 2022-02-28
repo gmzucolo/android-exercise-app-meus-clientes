@@ -7,7 +7,7 @@ public class ClienteDataModel {
     //1. atributo nome da tabela
     public static final String TABELA = "cliente";
 
-    //2. atriubutos um para um com os nomes dos campos
+    //2. atributos um para um com os nomes dos campos
     public static final String ID = "id"; //tipo de dado em sql -> integer
     public static final String NOME = "nome"; //tipo de dado em sql -> text
     public static final String TELEFONE = "telefone"; //tipo de dado em sql -> text
@@ -18,7 +18,7 @@ public class ClienteDataModel {
     public static final String BAIRRO = "bairro"; //tipo de dado em sql -> text
     public static final String CIDADE = "cidade"; //tipo de dado em sql -> text
     public static final String ESTADO = "estado"; //tipo de dado em sql -> text
-    public static final String TERMOS_DE_USO = "termos de uso"; //tipo de dado em sql -> integer
+    public static final String TERMOS = "termos"; //tipo de dado em sql -> integer
 
     //3. query para criar a tabela no banco de dados
     public static String queryCriarTabela = "";
@@ -27,18 +27,18 @@ public class ClienteDataModel {
     public static String criarTabela() {
 
         //concatenação de string
-        queryCriarTabela += "CREATE TABLE " + TABELA + " (";
-        queryCriarTabela += ID + " integer primary key autoincrement, ";
-        queryCriarTabela += NOME + " text, ";
-        queryCriarTabela += TELEFONE + " text, ";
-        queryCriarTabela += EMAIL + " text, ";
-        queryCriarTabela += CEP + " integer, ";
-        queryCriarTabela += LOGRADOURO + " text, ";
-        queryCriarTabela += NUMERO + " text, ";
-        queryCriarTabela += BAIRRO + " text, ";
-        queryCriarTabela += CIDADE + " text, ";
-        queryCriarTabela += ESTADO + " text, ";
-        queryCriarTabela += TERMOS_DE_USO + " integer";
+        queryCriarTabela += "CREATE TABLE "+TABELA+" (";
+        queryCriarTabela += ID+" integer primary key autoincrement, ";
+        queryCriarTabela += NOME+" text, "; // nome text
+        queryCriarTabela += TELEFONE+" text, "; // nome text
+        queryCriarTabela += EMAIL+" text, "; // nome text
+        queryCriarTabela += CEP+" integer, "; // nome text
+        queryCriarTabela += LOGRADOURO+" text, "; // nome text
+        queryCriarTabela += NUMERO+" text, "; // nome text
+        queryCriarTabela += BAIRRO+" text, "; // nome text
+        queryCriarTabela += CIDADE+" text, "; // nome text
+        queryCriarTabela += ESTADO+" text, "; // nome text
+        queryCriarTabela += TERMOS +" integer ";
         queryCriarTabela += ")";
 
         //query Criar tabela = "Parte 01 Parte 02 Parte 03 Parte 04"

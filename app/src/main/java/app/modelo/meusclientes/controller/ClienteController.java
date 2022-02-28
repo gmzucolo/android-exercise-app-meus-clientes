@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.util.Log;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import app.modelo.meusclientes.api.AppUtil;
@@ -42,7 +41,7 @@ public class ClienteController extends AppDataBase implements ICrud<Cliente> {
         dadoDoObjeto.put(ClienteDataModel.BAIRRO, obj.getBairro());
         dadoDoObjeto.put(ClienteDataModel.CIDADE, obj.getCidade());
         dadoDoObjeto.put(ClienteDataModel.ESTADO, obj.getEstado());
-        dadoDoObjeto.put(ClienteDataModel.TERMOS_DE_USO, obj.isTermosDeUso());
+        dadoDoObjeto.put(ClienteDataModel.TERMOS, obj.isTermosDeUso());
 
         //enviar os dados (dadoDoObjeto) para classe AppDataBase
         //utilizando  um método capaz de INCLUIR o Obj no banco
@@ -81,7 +80,6 @@ public class ClienteController extends AppDataBase implements ICrud<Cliente> {
     @Override
     public List<Cliente> listar() {
 
-        List<Cliente> lista = new ArrayList<>();
         return getAllClientes(ClienteDataModel.TABELA);
     }
 

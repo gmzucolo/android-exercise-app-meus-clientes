@@ -1,6 +1,5 @@
 package app.modelo.meusclientes.datasource;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -23,19 +22,22 @@ public class AppDataBase extends SQLiteOpenHelper {
     SQLiteDatabase db;
 
     public AppDataBase(Context context) {
-
         super(context, DB_NAME, null, DB_VERSION);
 
-        Log.d(AppUtil.TAG, "AppDataBase: Criando Banco de Dados...");
+        Log.d(AppUtil.TAG, "AppDataBase: Criando Banco de Dados");
 
         db = getWritableDatabase();
+
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(ClienteDataModel.criarTabela());
-        Log.d(AppUtil.TAG, "onCreate: Tabela Cliente criada " + ClienteDataModel.criarTabela());
+
+        Log.d(AppUtil.TAG, "onCreate: Tabela Cliente criada... "+ClienteDataModel.criarTabela());
+
     }
 
     @Override
@@ -45,67 +47,102 @@ public class AppDataBase extends SQLiteOpenHelper {
 
     /**
      * Método para incluir dados no banco de dados
-     *
      * @return
-     **/
-    public boolean insert(String tabela, ContentValues dados) {
+     */
+    public boolean insert(String tabela, ContentValues dados){
 
         db = getWritableDatabase();
+
         boolean retorno = false;
-        //regra de negócio
+
+        // Regra de negócio
+
         try {
-            //O que deve ser realizado? Salvar dados.
-            retorno = db.insert(tabela, null, dados) > 0;
-        } catch (Exception e) {
-            Log.d(AppUtil.TAG, "insert: " + e.getMessage());
+            // O que deve ser realizado?
+            // Salvar os dados
+
+            retorno = db.insert(tabela,null,dados) > 0;
+
+
+        }catch (Exception e){
+
+
+            Log.d(AppUtil.TAG, "insert: "+e.getMessage());
+
+
         }
-        return retorno;
+
+
+        return retorno; // FALSE ou TRUE
     }
 
     /**
      * Método para deletar dados no banco de dados
-     *
      * @return
-     **/
-    public boolean deleteByID(String tabela, int id) {
+     */
+    public boolean deleteByID(String tabela, int id){
 
         db = getWritableDatabase();
+
         boolean retorno = false;
-        //regra de negócio
+
+        // Regra de negócio
+
         try {
-            //O que deve ser realizado? Deletar dados.
-            retorno = db.delete(tabela, "id = ?", new String[]{String.valueOf(id)}) > 0;
-        } catch (Exception e) {
-            Log.d(AppUtil.TAG, "delete: " + e.getMessage());
+            // O que deve ser realizado?
+            // Salvar os dados
+
+            // retorno = db.insert(tabela,null,dados) > 0;
+            retorno = db.delete(tabela,"id = ?",new String[] {String.valueOf(id)}) > 0;
+
+
+        }catch (Exception e){
+
+
+            Log.d(AppUtil.TAG, "delete: "+e.getMessage());
+
+
         }
-        return retorno;
+
+
+        return retorno; // FALSE ou TRUE
     }
 
     /**
      * Método para alterar dados no banco de dados
-     *
      * @return
-     **/
-    public boolean update(String tabela, ContentValues dados) {
+     */
+    public boolean update(String tabela, ContentValues dados){
 
         db = getWritableDatabase();
+
         boolean retorno = false;
-        //regra de negócio
+
+        // Regra de negócio
+
         try {
-            //O que deve ser realizado? Update dados.
-            retorno = db.update(tabela, dados, "id = ?", new String[]{String.valueOf(dados.get("id"))}) > 0;
-        } catch (Exception e) {
-            Log.d(AppUtil.TAG, "update: " + e.getMessage());
+            // O que deve ser realizado?
+            // Salvar os dados
+
+            //
+            //
+            //  retorno = db.insert(tabela,null,dados) > 0;
+            //  retorno = db.delete(tabela,                  "id = ?",new String[] {String.valueOf(id)}) > 0;
+            retorno = db.update(tabela,dados,"id = ?",new String[] {String.valueOf(dados.get("id"))}) > 0;
+
+
+        }catch (Exception e){
+
+
+            Log.d(AppUtil.TAG, "update: "+e.getMessage());
+
+
         }
-        return retorno;
+
+        return retorno; // FALSE ou TRUE
     }
 
-    /**
-     * Método para listar dados no banco de dados
-     *
-     * @return
-     **/
-    @SuppressLint("Range")
+
     public List<Cliente> getAllClientes(String tabela) {
 
         db = getWritableDatabase();
@@ -119,18 +156,26 @@ public class AppDataBase extends SQLiteOpenHelper {
 
         cursor = db.rawQuery(sql, null);
 
-        if (cursor.moveToFirst()) {
-            do {
+        if (cursor.moveToFirst()){
+
+            do{
                 obj = new Cliente();
+
                 obj.setId(cursor.getInt(cursor.getColumnIndex(ClienteDataModel.ID)));
                 obj.setNome(cursor.getString(cursor.getColumnIndex(ClienteDataModel.NOME)));
                 obj.setEmail(cursor.getString(cursor.getColumnIndex(ClienteDataModel.EMAIL)));
 
                 clientes.add(obj);
-                Log.i("Listar", "getAllClientes: " + obj.getNome());
-            } while (cursor.moveToNext());
+
+                Log.i("Listar", "getAllClientes: "+obj.getNome());
+
+            }while (cursor.moveToNext());
+
         }
 
+
         return clientes;
+
     }
+
 }
