@@ -1,6 +1,9 @@
 package app.modelo.meusclientes.view;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +32,7 @@ public class ListarClientesFragment extends Fragment {
     List<String> clientes;
     ArrayAdapter<String> clienteAdapter;
     ArrayList<HashMap<String, String>> filtroClientes;
-    ClienteController clienteControler;
+    ClienteController clienteController;
     Cliente objCliente;
 
     public ListarClientesFragment() {
@@ -52,26 +55,39 @@ public class ListarClientesFragment extends Fragment {
 
         txtTitulo.setText(R.string.listar_clientes);
 
-        clienteControler = new ClienteController(getContext());
+        clienteController = new ClienteController(getContext());
 
         listView = (ListView) view.findViewById(R.id.listView);
 
         editPesquisarNome = view.findViewById(R.id.editPesquisarNome);
 
-        clienteList = clienteControler.listar();
+        clienteList = clienteController.listar();
 
-        clientes = new ArrayList<>();
-
-        //TODO - Implementar regra de negocio na controladora da classe cliente
-
-        for (Cliente obj : clienteList) {
-
-            clientes.add(obj.getId() + ". " + obj.getNome());
-        }
+        clientes = clienteController.gerarListaDeClientesListView();
 
         clienteAdapter = new ArrayAdapter<>(getContext(), R.layout.listar_cliente_item, R.id.txtItemLista, clientes);
 
         listView.setAdapter(clienteAdapter);
+
+        editPesquisarNome.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence filtro, int start, int count, int after) {
+
+                ListarClientesFragment.this.clienteAdapter.getFilter().filter(filtro);
+
+                Log.i("add_ListView", "beforeTextChanged: " + filtro);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         return view;
     }
