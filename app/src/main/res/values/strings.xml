@@ -7,8 +7,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Sair</string>
     <string name="modelo_fragment">Cliente VIP</string>
-    <string name="fragmento_cinza">Fragmento Cinza</string>
-    <string name="fragmento_vermelho">Fragmento Vermelho</string>
-    <string name="fragmento_azul">Fragmento Azul</string>
-    <string name="adicionar_cliente">Adicionar Novo Cliente</string>
+    <string name="fragmento_cinza">Fragmento cinza</string>
+    <string name="fragmento_vermelho">Fragmento vermelho</string>
+    <string name="fragmento_azul">Fragmento azul</string>
+    <string name="adicionar_cliente">Adicionar novo cliente</string>
+    <string name="listar_clientes">Lista de clientes</string>
 </resources>
