@@ -110,7 +110,6 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        // TODO: obter ID para a opção selecionada no MENU DRAWER
         if (id == R.id.nav_cinza) {
 
             menu = navigationView.getMenu();
@@ -145,6 +144,14 @@ public class MainActivity extends AppCompatActivity
 
             fragmentManager.beginTransaction().replace(R.id.content_fragment, new AdicionarClienteFragment()).commit();
 
+        } else if (id == R.id.nav_adicionar_cliente_cards) {
+
+            menu = navigationView.getMenu();
+
+            navigationView.setItemTextColor(ColorStateList.valueOf(Color.BLACK));
+
+            fragmentManager.beginTransaction().replace(R.id.content_fragment, new AdicionarClienteCardsFragment()).commit();
+
         } else if (id == R.id.nav_listar_cliente) {
 
             menu = navigationView.getMenu();
@@ -152,6 +159,14 @@ public class MainActivity extends AppCompatActivity
             navigationView.setItemTextColor(ColorStateList.valueOf(Color.BLACK));
 
             fragmentManager.beginTransaction().replace(R.id.content_fragment, new ListarClientesFragment()).commit();
+
+        } else if (id == R.id.nav_listar_cliente_cards) {
+
+            menu = navigationView.getMenu();
+
+            navigationView.setItemTextColor(ColorStateList.valueOf(Color.BLACK));
+
+            fragmentManager.beginTransaction().replace(R.id.content_fragment, new ListarClientesCardsFragment()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

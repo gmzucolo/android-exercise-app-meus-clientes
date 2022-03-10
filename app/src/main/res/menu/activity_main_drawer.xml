@@ -9,9 +9,17 @@
             android:icon="@drawable/ic_item_menu_padrao"
             android:title="@string/adicionar_cliente" />
 
+        <item android:id="@+id/nav_adicionar_cliente_cards"
+            android:icon="@drawable/ic_item_menu_padrao"
+            android:title="@string/adicionar_cliente_cards" />
+
         <item android:id="@+id/nav_listar_cliente"
             android:icon="@drawable/ic_item_menu_padrao"
             android:title="@string/listar_clientes" />
+
+        <item android:id="@+id/nav_listar_cliente_cards"
+            android:icon="@drawable/ic_item_menu_padrao"
+            android:title="@string/listar_clientes_cards" />
 
         <item android:id="@+id/nav_cinza"
             android:icon="@drawable/ic_item_menu_padrao"
